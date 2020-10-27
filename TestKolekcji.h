@@ -1,6 +1,5 @@
 #pragma once
-#include <string>
-#include <vector>
+#include "define.h"
 // czym wype³niaæ, sta³e:
 #define CW_DNIAMI_TYGODNIA 't'
 #define CW_LICZBAMI        'l'
@@ -16,7 +15,7 @@ class TestKolekcji
 {
 private:
 	vector<string> vec;
-	string formatowanie(const string &txt_p);
+	virtual string formatowanie(const string &txt_p);
 public:
 	TestKolekcji(int ile);
 	TestKolekcji(typywyliczeniowe::TCzymWypelniamy czym);
