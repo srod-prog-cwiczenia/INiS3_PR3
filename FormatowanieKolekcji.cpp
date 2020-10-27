@@ -1,0 +1,1 @@
+#include "FormatowanieKolekcji.h"
