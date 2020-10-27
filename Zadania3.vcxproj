@@ -148,10 +148,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FormatowanieKolekcji.cpp" />
     <ClCompile Include="TestKolekcji.cpp" />
     <ClCompile Include="ZadaniaCPP.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FormatowanieKolekcji.h" />
     <ClInclude Include="TestKolekcji.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

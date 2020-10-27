@@ -3,6 +3,11 @@
 #include <cassert>
 using namespace typywyliczeniowe;
 
+string TestKolekcji::formatowanie(const string& txt_p)
+{
+	return txt_p;
+}
+
 TestKolekcji::TestKolekcji(int ile)
 {
 	for (int i = 0; i < ile; i++) {
@@ -52,6 +57,6 @@ TestKolekcji::~TestKolekcji()
 void TestKolekcji::wypisanie()
 {
 	for (string txt : vec) {
-		cout << txt << endl;
+		cout << formatowanie(txt) << endl;
 	}
 }

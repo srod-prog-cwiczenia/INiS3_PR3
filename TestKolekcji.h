@@ -16,6 +16,7 @@ class TestKolekcji
 {
 private:
 	vector<string> vec;
+	string formatowanie(const string &txt_p);
 public:
 	TestKolekcji(int ile);
 	TestKolekcji(typywyliczeniowe::TCzymWypelniamy czym);
