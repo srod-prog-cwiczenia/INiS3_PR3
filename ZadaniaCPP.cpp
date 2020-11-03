@@ -4,18 +4,25 @@
 #include "TestKolekcji.h"
 #include "FormatowanieKolekcji.h"
 
+class Zadania {
+public:
+    static void formatowanieKolekcji() {
+        // wskaźnik na obiekt
+        FormatowanieKolekcji* fk = new FormatowanieKolekcji(10);
+        fk->wypisanie();
+        delete fk;
+
+        cout << "\n--------------------------\n";
+        // obiekt statyczny:
+        FormatowanieKolekcji tks(typywyliczeniowe::TCzymWypelniamy::cwDniTygodnia);
+        tks.wypisanie();
+    };
+
+};
+
 int main()
 {
-  //std::cout << "Hello World!\n";
-    // wskaźnik na obiekt
-    FormatowanieKolekcji*fk = new FormatowanieKolekcji(10);
-    fk->wypisanie();
-    delete fk;
-
-    cout << "\n--------------------------\n";
-    // obiekt statyczny:
-    FormatowanieKolekcji tks(typywyliczeniowe::TCzymWypelniamy::cwDniTygodnia);
-    tks.wypisanie();
+    Zadania::formatowanieKolekcji();
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
