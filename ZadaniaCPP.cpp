@@ -47,13 +47,23 @@ public:
             suma += *wsk++;
         cout << "Suma: " << suma << endl;
     }
+    static void zadaniaZKolekcji() {
+        //TODO zainicjowac kolekcje lista podaną listą intów,
+        //policzyć sumę (różnymi metodami m.in. użyć iteratora).
+        list<int> li({ 13, 7, 8, 1 });
+// sposób nr 1 - za pomocą pętli ,,foreach"        
+        int suma = 0;
+        for (auto i : li)
+            suma += i;
+        cout << "Suma: " << suma << endl;
+    }
 };
 
 int main()
 {
     for (;;) {
         TMenu* mnu = new TMenu();
-        mnu->addAll(2, "Testy kolekcji", "Wskazniki");
+        mnu->addAll(3, "Testy kolekcji", "Wskazniki", "Zadania z kolekcji STL");
         switch (mnu->wybierz()) {
         case 0:
             exit(0);
@@ -62,6 +72,9 @@ int main()
             break;
         case 2:
             Zadania::zadaniaZeWskaznikow();
+            break;
+        case 3:
+            Zadania::zadaniaZKolekcji();
             break;
         }
         delete mnu;
