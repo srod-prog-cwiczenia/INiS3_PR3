@@ -27,7 +27,7 @@ public:
             suma += i;
         cout << "Suma: " << suma << endl;
 
-        //(...)a teraz wskaźnikami:
+        //(...)a teraz wskaźnikami: (wymagane zaznaczenie konca tab przez 0)
         int* wsk = tab;
         suma = 0;
         while (*wsk) {
@@ -35,6 +35,7 @@ public:
         };
         //Zadanie domowe TODO: Zbadać czy działa poprawnie (przypuszczalnie tak)
         //poniższy kod. Jeśli jest poprawny to rozgryźć dlaczego?
+        //(uwaga: wymagane zaznaczenie konca tab przez 0)
         //(uwaga: w tym ,,trickowym'' rozwiązaniu jak poniżej używamy 
         // , - wyrażenie (a,b) oznacza oblicz a oblicz b i weź wartość b)
               //while (suma += *wsk, *(++wsk)); //uwaga: przypadek {0} będzie działał źle
