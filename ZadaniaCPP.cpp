@@ -18,7 +18,18 @@ public:
         FormatowanieKolekcji tks(typywyliczeniowe::TCzymWypelniamy::cwDniTygodnia);
         tks.wypisanie();
     };
+    static void zadaniaZeWskaznikow() {
+        //Zadanie nr 1: poniższy kod liczy sumę elementów tablicy,
+        //napisać go używając wskaźników:
+        int tab[] = { 13, 7, 8, 1 };
+        int suma = 0;
+        for (auto i : tab)
+            suma += i;
+        cout << "Suma: " << suma << endl;
+        //(...)a teraz wskaźnikami:
+        int* wsk;//...
 
+    }
 };
 
 int main()
@@ -33,7 +44,7 @@ int main()
             Zadania::formatowanieKolekcji();
             break;
         case 2:
-            cout << "TODO\n";
+            Zadania::zadaniaZeWskaznikow();
             break;
         }
         delete mnu;
