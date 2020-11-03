@@ -21,14 +21,30 @@ public:
     static void zadaniaZeWskaznikow() {
         //Zadanie nr 1: poniższy kod liczy sumę elementów tablicy,
         //napisać go używając wskaźników:
-        int tab[] = { 13, 7, 8, 1 };
+        int tab[] = { 13, 7, 8, 1, 0}; //0 oznacza koniec tablicy!
         int suma = 0;
         for (auto i : tab)
             suma += i;
         cout << "Suma: " << suma << endl;
-        //(...)a teraz wskaźnikami:
-        int* wsk;//...
 
+        //(...)a teraz wskaźnikami:
+        int* wsk = tab;
+        suma = 0;
+        while (*wsk) {
+            suma += *(wsk++);
+        };
+        //Zadanie domowe TODO: Zbadać czy działa poprawnie (przypuszczalnie tak)
+        //poniższy kod. Jeśli jest poprawny to rozgryźć dlaczego?
+        //(uwaga: w tym ,,trickowym'' rozwiązaniu jak poniżej używamy 
+        // , - wyrażenie (a,b) oznacza oblicz a oblicz b i weź wartość b)
+              //while (suma += *wsk, *(++wsk)); //uwaga: przypadek {0} będzie działał źle
+        cout << "Suma: " << suma << endl;
+
+        wsk = tab; suma = 0;
+        //wyliczenie sumy bez zakładania że ostatni element tablicy to zero:
+        for (int i = 0; i < sizeof(tab) / sizeof(tab[0]); i++)
+            suma += *wsk++;
+        cout << "Suma: " << suma << endl;
     }
 };
 
