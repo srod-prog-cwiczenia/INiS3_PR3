@@ -56,6 +56,13 @@ public:
         for (auto i : li)
             suma += i;
         cout << "Suma: " << suma << endl;
+//sposób nr 2 - za pomocą iteratora:
+        suma = 0;
+          // auto poniżej rozwija się do typu: list<int>::iterator
+        for (auto ite = li.begin(); ite != li.end(); ite++) {
+            suma += *ite;
+        }
+        cout << "Suma: " << suma << endl;
     }
 };
 
