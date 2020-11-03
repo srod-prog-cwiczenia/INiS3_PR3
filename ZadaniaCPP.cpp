@@ -3,6 +3,7 @@
 
 #include "TestKolekcji.h"
 #include "FormatowanieKolekcji.h"
+#include "TMenu.h"
 
 class Zadania {
 public:
@@ -22,7 +23,21 @@ public:
 
 int main()
 {
-    Zadania::formatowanieKolekcji();
+    for (;;) {
+        TMenu* mnu = new TMenu();
+        mnu->addAll(2, "Testy kolekcji", "Wskazniki");
+        switch (mnu->wybierz()) {
+        case 0:
+            exit(0);
+        case 1:
+            Zadania::formatowanieKolekcji();
+            break;
+        case 2:
+            cout << "TODO\n";
+            break;
+        }
+        delete mnu;
+    }
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
