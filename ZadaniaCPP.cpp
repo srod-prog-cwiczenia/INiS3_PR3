@@ -17,6 +17,17 @@ public:
         // obiekt statyczny:
         FormatowanieKolekcji tks(typywyliczeniowe::TCzymWypelniamy::cwDniTygodnia);
         tks.wypisanie();
+
+        /* napisać formatowanie wydruku ale z użyciem
+        podstawienia pod wskaźnik na funkcję a nie j.w. (z użyciem metody wirtualnej) */
+/* sposób na utworzenie obiektu dynamicznego: TestKolekcji *tk = new(TestKolekcji) 
+        { typywyliczeniowe::TCzymWypelniamy::cwDniTygodnia };*/
+        cout << endl << "Formatowanie z uzyciem wskaznikow na funkcje: " << endl;
+        TestKolekcji tk = { typywyliczeniowe::TCzymWypelniamy::cwDniTygodnia };
+        tk.ustawienieFunkcjiFormatujacej(
+            [](string txt_p) -> string { return txt_p + "."; }
+        );
+        tk.wypisanie();
     };
     static void zadaniaZeWskaznikow() {
         //Zadanie nr 1: poniższy kod liczy sumę elementów tablicy,
