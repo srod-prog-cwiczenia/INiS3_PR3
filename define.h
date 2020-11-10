@@ -4,5 +4,6 @@
 #include <list>
 #include <string>
 #include <cstdarg>
+#include <cassert>
 using namespace std;
 

@@ -26,6 +26,7 @@ public:
         for (auto i : tab)
             suma += i;
         cout << "Suma: " << suma << endl;
+        assert(suma == 29 && "Zle policzona suma!");
 
         //(...)a teraz wskaźnikami: (wymagane zaznaczenie konca tab przez 0)
         int* wsk = tab;
@@ -40,13 +41,14 @@ public:
         // , - wyrażenie (a,b) oznacza oblicz a oblicz b i weź wartość b)
               //while (suma += *wsk, *(++wsk)); //uwaga: przypadek {0} będzie działał źle
         cout << "Suma: " << suma << endl;
+        assert(suma == 29 && "Zle policzona suma!");
 
         wsk = tab; suma = 0;
         //wyliczenie sumy bez zakładania że ostatni element tablicy to zero:
         for (int i = 0; i < sizeof(tab) / sizeof(tab[0]); i++)
             suma += *wsk++;
         cout << "Suma: " << suma << endl;
-
+        assert(suma == 29 && "Zle policzona suma!");
         /*
           Zadanie: Mamy tablicę dwuwymiarową: int tabM[10][10];
           uzupełnić ją iloczynami (`a la tabliczka mnożenia).
@@ -69,11 +71,15 @@ public:
 */
         //albo inna wersja używająca rzutowania:
 //        wsk = (int*)tabM;
+
+        //wstawka modyfikacyjna by przetestować że intM[nr] jest typu int*:
+        //wsk = tabM[3]; for (int l = 0; l < 10; (l++,*wsk++ = 7));
+
         cout << string(50, '=') << endl;
         //teraz drukujemy tablicę:
         for (int i = 0; i < 10; (cout << '\n', i++))
             for (int j = 0; j < 10; j++)
-                cout << tabM[i][j] << " ";
+                cout << tabM[i][j] << '\t';
         cout << endl;
     }
     static void zadaniaZKolekcji() {
