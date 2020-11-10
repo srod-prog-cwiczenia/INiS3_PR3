@@ -15,6 +15,14 @@ class TestKolekcji
 {
 private:
 	vector<string> vec;
+	/*
+	trzeba dodaæ pole typu funkcyjnego (w C++ nazywa siê to
+	,,wskaŸnik na funkcjê'' i ustawiæ go w ka¿dym konstruktorze na null.
+	dodaæ metodê ustawiaj¹c¹ to pole i przed wywo³aniem
+	formatowania sprawdzaæ czy trzeba uruchomiæ nasz¹ funkcjê
+	)
+	*/
+	TFunkcjaFormatujaca funFormat = NULL;
 	virtual string formatowanie(const string &txt_p);
 public:
 	TestKolekcji(int ile);
@@ -22,5 +30,6 @@ public:
 	TestKolekcji(char czym);
 	~TestKolekcji();
 	void wypisanie();
+	void ustawienieFunkcjiFormatujacej(TFunkcjaFormatujaca ff);
 };
 

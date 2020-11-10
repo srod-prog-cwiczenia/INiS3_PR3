@@ -5,7 +5,10 @@ using namespace typywyliczeniowe;
 
 string TestKolekcji::formatowanie(const string& txt_p)
 {
-	return txt_p;
+	if (funFormat == NULL)
+		return txt_p;
+	else
+		return funFormat(txt_p);
 }
 
 TestKolekcji::TestKolekcji(int ile)
@@ -59,4 +62,8 @@ void TestKolekcji::wypisanie()
 	for (string txt : vec) {
 		cout << formatowanie(txt) << endl;
 	}
+}
+
+void TestKolekcji::ustawienieFunkcjiFormatujacej(TFunkcjaFormatujaca ff) {
+	funFormat = ff;
 }
