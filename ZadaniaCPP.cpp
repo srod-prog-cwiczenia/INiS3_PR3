@@ -63,7 +63,10 @@ public:
         wsk = tabM[0];
         for (int k = 0; k < 100; k++)
             *wsk++ = (k / 10 + 1) * (k % 10 + 1);
-        
+/* tak nie robimy: int** wsk2 = (int**) tabM;
+*  bo tabM nie da się zrzutować (sensownie) na podwójny wskaźnik
+* bo tablica dwuwymiarowa to NIE JEST podwójny wskaźnik
+*/
         //albo inna wersja używająca rzutowania:
 //        wsk = (int*)tabM;
         cout << string(50, '=') << endl;
