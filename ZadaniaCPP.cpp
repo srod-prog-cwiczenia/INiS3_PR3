@@ -46,6 +46,32 @@ public:
         for (int i = 0; i < sizeof(tab) / sizeof(tab[0]); i++)
             suma += *wsk++;
         cout << "Suma: " << suma << endl;
+
+        /*
+          Zadanie: Mamy tablicę dwuwymiarową: int tabM[10][10];
+          uzupełnić ją iloczynami (`a la tabliczka mnożenia).
+          ale używając wskaźników:
+
+        */
+        int tabM[10][10];
+        /*
+          rozwiązanie klasyczne:
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++)
+                tabM[i][j] = (i + 1) * (j + 10);*/
+        //rozwiązanie ze wskaźnikami:
+        wsk = tabM[0];
+        for (int k = 0; k < 100; k++)
+            *wsk++ = (k / 10 + 1) * (k % 10 + 1);
+        
+        //albo inna wersja używająca rzutowania:
+//        wsk = (int*)tabM;
+        cout << string(50, '=') << endl;
+        //teraz drukujemy tablicę:
+        for (int i = 0; i < 10; (cout << '\n', i++))
+            for (int j = 0; j < 10; j++)
+                cout << tabM[i][j] << " ";
+        cout << endl;
     }
     static void zadaniaZKolekcji() {
         //TODO zainicjowac kolekcje lista podaną listą intów,
