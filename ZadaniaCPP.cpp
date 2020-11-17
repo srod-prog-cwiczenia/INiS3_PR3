@@ -113,15 +113,15 @@ public:
     static void zadaniaZDzialanNaKolekcjach() {
         /*na elementach kolekcji można ,,uruchamiać'' funkcje*/
         list<int> li({ 13, 7, 8, 1 });
-        /*zmienić zawartość kolekcji li na kwadraty liczb 
+        /*wypisać zawartość kolekcji li wyliczając kwadraty liczb 
         za pomocą modułu #include <algorithm> i funkcji for_each*/
-        auto kwadrat = [](int ii) -> int {return ii * ii; };
+        auto kwadrat = [](int ii) -> void {cout << ii << ": " << ii * ii << endl; };
         for_each(li.begin(), li.end(), kwadrat);
 
-        cout << "Zawartosc listy: " << endl;
+/*        cout << "Zawartosc listy: " << endl;
         for (auto i : li)
             cout << i << "\t";
-        cout << endl;
+        cout << endl;*/
     }
 };
 
