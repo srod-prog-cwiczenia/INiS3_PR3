@@ -23,7 +23,7 @@ class TMenu: public TMenuAbs
 private:
 	vector<string> tabItemsV;
 public:
-	void add(string item);
+	void add(const string &item);
 	void addAll(int ilePar, ...);
 	unsigned int wybierz();
 	TMenu();

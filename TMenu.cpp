@@ -1,7 +1,7 @@
 #include "define.h"
 #include "TMenu.h"
 
-void TMenu::add(string item)
+void TMenu::add(const string &item)
 {
 	tabItemsV.push_back(item);
 }

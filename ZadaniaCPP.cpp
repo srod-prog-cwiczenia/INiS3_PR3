@@ -115,7 +115,8 @@ public:
         list<int> li({ 13, 7, 8, 1 });
         /*zmienić zawartość kolekcji li na kwadraty liczb 
         za pomocą modułu #include <algorithm> i funkcji for_each*/
-
+        auto kwadrat = [](int ii) -> int {return ii * ii; };
+        for_each(li.begin(), li.end(), kwadrat);
 
         cout << "Zawartosc listy: " << endl;
         for (auto i : li)

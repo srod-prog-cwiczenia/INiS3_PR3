@@ -5,6 +5,7 @@
 #include <string>
 #include <cstdarg>
 #include <cassert>
+#include <algorithm>
 using namespace std;
 /* wskaŸnik na funkcjê formatuj¹c¹: */
 /*zadanie: zmieniæ (=zoptymalizowaæ) typ
