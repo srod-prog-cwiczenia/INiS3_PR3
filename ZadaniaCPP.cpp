@@ -115,8 +115,8 @@ public:
         list<int> li({ 13, 7, 8, 1 });
         /*wypisać zawartość kolekcji li wyliczając kwadraty liczb 
         za pomocą modułu #include <algorithm> i funkcji for_each*/
-        int licznik = 0;
-        auto kwadrat = [licznik](int ii)mutable-> void {cout << ++licznik << ". "
+        int licznik;
+        auto kwadrat = [licznik = 0](int ii)mutable-> void {cout << ++licznik << ". "
             << ii << ": " << ii * ii << endl; };
         /*słowo kluczowe mutable oznacza że zmienne
         zewnętrzne (licznik) można zmieniać i są tworzone kopie
@@ -126,8 +126,16 @@ public:
         cout << string(50, '-') << endl;
         for_each(li.begin(), li.end(), kwadrat);
         cout << string(50, '-') << endl;
+        for (int jj = 0; jj < 8; jj++)
+            kwadrat(jj);
+        cout << string(50, '-') << endl;
+/*TODO: zauważmy że licznik w ostatniej pętli (poniżej) 
+nie resetuje się, wyjaśnić - dlaczego ? */
+        for (int jj = 9; jj < 12; jj++)
+            kwadrat(jj);
+        cout << string(50, '-') << endl;
         /*zadanie: wymyśleć modyfikację funkcji kwadrat by wypisywała licznik
-        wierszy*/
+        wierszy. Rozwiązanie - lambda funkcja i modyfikator mutable*/
 
 /*        cout << "Zawartosc listy: " << endl;
         for (auto i : li)
