@@ -110,13 +110,26 @@ public:
         }
         cout << "Suma: " << suma << endl;
     }
+    static void zadaniaZDzialanNaKolekcjach() {
+        /*na elementach kolekcji można ,,uruchamiać'' funkcje*/
+        list<int> li({ 13, 7, 8, 1 });
+        /*zmienić zawartość kolekcji li na kwadraty liczb 
+        za pomocą modułu #include <algorithm> i funkcji for_each*/
+
+
+        cout << "Zawartosc listy: " << endl;
+        for (auto i : li)
+            cout << i << "\t";
+        cout << endl;
+    }
 };
 
 int main()
 {
     for (;;) {
         TMenu* mnu = new TMenu();
-        mnu->addAll(3, "Testy kolekcji", "Wskazniki", "Zadania z kolekcji STL");
+        mnu->addAll(4, "Testy kolekcji", "Wskazniki", 
+            "Zadania z kolekcji STL", "Zadania z modyfikacji elementow kolekcji");
         switch (mnu->wybierz()) {
         case 0:
             exit(0);
@@ -128,6 +141,9 @@ int main()
             break;
         case 3:
             Zadania::zadaniaZKolekcji();
+            break;
+        case 4: 
+            Zadania::zadaniaZDzialanNaKolekcjach();
             break;
         }
         delete mnu;
