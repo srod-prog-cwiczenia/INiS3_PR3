@@ -7,5 +7,7 @@
 #include <cassert>
 using namespace std;
 /* wskaŸnik na funkcjê formatuj¹c¹: */
-typedef string(*TFunkcjaFormatujaca)(string);
+/*zadanie: zmieniæ (=zoptymalizowaæ) typ
+TFunkcjaFormatuj¹ca jako posiadaj¹ca parametr const string & zamiast string*/
+typedef string(*TFunkcjaFormatujaca)(const string&);
 

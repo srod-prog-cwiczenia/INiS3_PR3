@@ -25,7 +25,7 @@ public:
         cout << endl << "Formatowanie z uzyciem wskaznikow na funkcje: " << endl;
         TestKolekcji tk = { typywyliczeniowe::TCzymWypelniamy::cwDniTygodnia };
         tk.ustawienieFunkcjiFormatujacej(
-            [](string txt_p) -> string { return txt_p + "."; }
+            [](const string &txt_p) -> string { return txt_p + "."; }
         );
         tk.wypisanie();
     };
