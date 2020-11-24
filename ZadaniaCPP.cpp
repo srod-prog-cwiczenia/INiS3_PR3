@@ -180,9 +180,36 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         cout << string(50, '-') << endl;
     }
     static void zadaniaZModyfikacjiKolekcjiFunktory() {
-        /*napisać funktor który zamienia zawartość łańcucha na duże litery 
-        i zastosować go do kolekcji łańcuchów. czy da się to zrealizować za pomocą 
+        /*napisać funktor który zamienia zawartość łańcucha na duże litery
+        i zastosować go do kolekcji łańcuchów. czy da się to zrealizować za pomocą
         lambda funkcji? */
+        //lambda funkcja:
+        auto duzeLitery = [](const string& txt)->string {
+            string txtL(txt); for (auto& c : txtL) c = toupper(c); return txtL; 
+        };
+        //funktor:
+        struct DuzeLiteryFun {
+            string operator()(const string &txt) {
+              string txtL(txt); for (auto& c : txtL) c = toupper(c); return txtL;
+            }
+        };
+        vector<string> inS = { "Merkury", "Wenus", "Ziemia", "Mars", "Jowisz", "Saturn",
+           "Uran", "Neptun", "Pluton" };
+        //instrukcja która przekształca (transformuje ;) ) elementy kolekcji
+        // to transform (#include <algorithm>)
+        vector<string> outS1(inS.size()); //bo wektor wynikowy ma być zainicjowany pustymi łańcuchami do zadanej długości
+        transform(inS.begin(), inS.end(), outS1.begin(), duzeLitery);
+        cout << "Transformacja przez lambda funkcje: " << endl;
+        for (auto txt : outS1)
+            cout << txt << endl;
+        cout << endl;
+        
+        vector<string> outS2(inS.size()); //bo wektor wynikowy ma być zainicjowany pustymi łańcuchami do zadanej długości
+        transform(inS.begin(), inS.end(), outS2.begin(), DuzeLiteryFun());
+        cout << "Transformacja przez funktory: " << endl;
+        for (auto txt : outS2)
+            cout << txt << endl;
+        cout << endl;
     }
 };
 
