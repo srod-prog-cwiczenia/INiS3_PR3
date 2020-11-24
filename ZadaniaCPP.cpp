@@ -179,16 +179,23 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
             kw(jj);
         cout << string(50, '-') << endl;
     }
+    static void zadaniaZModyfikacjiKolekcjiFunktory() {
+        /*napisać funktor który zamienia zawartość łańcucha na duże litery 
+        i zastosować go do kolekcji łańcuchów. czy da się to zrealizować za pomocą 
+        lambda funkcji? */
+    }
 };
 
 int main()
 {
     for (;;) {
         TMenu* mnu = new TMenu();
-        mnu->addAll(5, "Testy kolekcji", "Wskazniki", 
-            "Zadania z kolekcji STL", 
-            "Zadania z modyfikacji elementow kolekcji (z uzyciem lambda funkcji)",
-            "Zadania z modyfikacji elementow kolekcji (z uzyciem funktorow)");
+        mnu->addAll(6, "Testy kolekcji", "Wskazniki",
+            "Zadania z kolekcji STL",
+            "Zadania z wypisywania elementow kolekcji (z uzyciem lambda funkcji)",
+            "Zadania z wypisywania elementow kolekcji (z uzyciem funktorow)",
+            "Zadania z modyfikacji elementow kolekcji (z uzyciem funktorow)"
+        );
         switch (mnu->wybierz()) {
         case 0:
             exit(0);
@@ -204,8 +211,11 @@ int main()
         case 4:
             Zadania::zadaniaZDzialanNaKolekcjach();
             break;
-        case 5: 
+        case 5:
             Zadania::zadaniaZDzialanNaKolekcjachFunktory();
+            break;
+        case 6:
+            Zadania::zadaniaZModyfikacjiKolekcjiFunktory();
             break;
         }
         delete mnu;
