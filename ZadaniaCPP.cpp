@@ -149,16 +149,43 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         cout << endl;*/
     }
     /* zadanie : przepisać to samo ale używając funktorów */
-
-
+    static void zadaniaZDzialanNaKolekcjachFunktory() { 
+        /*to jest funktor, jest to struktura którą używamy jako funkcję : */
+        struct Kwadraty {
+        private:
+            int licznik;
+        public:
+            Kwadraty() : licznik(0) {};
+            void operator()(int ii) {
+                cout << ++licznik << ". " << ii << ": " << ii * ii << endl;
+            }
+        };
+    
+        list<int> li({ 13, 7, 8, 1 });
+        cout << string(50, '-') << endl;
+        for_each(li.begin(), li.end(), Kwadraty());
+        cout << string(50, '-') << endl;
+        for_each(li.begin(), li.end(), Kwadraty());
+        cout << string(50, '-') << endl;
+        Kwadraty kw;
+        for (int jj = 0; jj < 8; jj++)
+            kw(jj);
+        cout << string(50, '-') << endl;
+        Kwadraty kw2;
+        for (int jj = 9; jj < 12; jj++)
+            kw2(jj);
+        cout << string(50, '-') << endl;
+    }
 };
 
 int main()
 {
     for (;;) {
         TMenu* mnu = new TMenu();
-        mnu->addAll(4, "Testy kolekcji", "Wskazniki", 
-            "Zadania z kolekcji STL", "Zadania z modyfikacji elementow kolekcji");
+        mnu->addAll(5, "Testy kolekcji", "Wskazniki", 
+            "Zadania z kolekcji STL", 
+            "Zadania z modyfikacji elementow kolekcji (z uzyciem lambda funkcji)",
+            "Zadania z modyfikacji elementow kolekcji (z uzyciem funktorow)");
         switch (mnu->wybierz()) {
         case 0:
             exit(0);
@@ -171,8 +198,11 @@ int main()
         case 3:
             Zadania::zadaniaZKolekcji();
             break;
-        case 4: 
+        case 4:
             Zadania::zadaniaZDzialanNaKolekcjach();
+            break;
+        case 5: 
+            Zadania::zadaniaZDzialanNaKolekcjachFunktory();
             break;
         }
         delete mnu;
