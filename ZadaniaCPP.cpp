@@ -156,9 +156,12 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
             int licznik;
         public:
             Kwadraty() : licznik(0) {};
+            Kwadraty(int poczatkowaWartoscLicznika) :
+                licznik(poczatkowaWartoscLicznika) {};/*dodatkowy konstruktor inicjujacy licznik */
             void operator()(int ii) {
                 cout << ++licznik << ". " << ii << ": " << ii * ii << endl;
             }
+            void reset() { licznik = 0; }
         };
     
         list<int> li({ 13, 7, 8, 1 });
@@ -171,9 +174,9 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         for (int jj = 0; jj < 8; jj++)
             kw(jj);
         cout << string(50, '-') << endl;
-        Kwadraty kw2;
+        kw.reset();
         for (int jj = 9; jj < 12; jj++)
-            kw2(jj);
+            kw(jj);
         cout << string(50, '-') << endl;
     }
 };
