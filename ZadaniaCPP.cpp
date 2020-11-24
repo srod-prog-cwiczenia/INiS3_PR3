@@ -116,21 +116,27 @@ public:
         /*wypisać zawartość kolekcji li wyliczając kwadraty liczb 
         za pomocą modułu #include <algorithm> i funkcji for_each*/
         int licznik;
-        auto kwadrat = [licznik = 0](int ii)mutable-> void {cout << ++licznik << ". "
+        auto kwadrat = [&licznik](int ii)-> void {cout << ++licznik << ". "
             << ii << ": " << ii * ii << endl; };
         /*słowo kluczowe mutable oznacza że zmienne
         zewnętrzne (licznik) można zmieniać i są tworzone kopie
         lokalne po każdorazowym wywołaniu */
         cout << string(50, '-') << endl;
+        licznik = 0;
         for_each(li.begin(), li.end(), kwadrat);
         cout << string(50, '-') << endl;
+        licznik = 0;
         for_each(li.begin(), li.end(), kwadrat);
         cout << string(50, '-') << endl;
+        licznik = 0;
         for (int jj = 0; jj < 8; jj++)
             kwadrat(jj);
         cout << string(50, '-') << endl;
 /*TODO: zauważmy że licznik w ostatniej pętli (poniżej) 
-nie resetuje się, wyjaśnić - dlaczego ? */
+nie resetuje się, wyjaśnić - dlaczego ? Rozwiązanie problemu:
+mozna np. podawać w liście zewnętrznych zmiennych lambda funkcji ([...])
+wskaźnik na licznik i inicjować go za każdym razem na 0. */
+        licznik = 0;
         for (int jj = 9; jj < 12; jj++)
             kwadrat(jj);
         cout << string(50, '-') << endl;
@@ -142,6 +148,9 @@ nie resetuje się, wyjaśnić - dlaczego ? */
             cout << i << "\t";
         cout << endl;*/
     }
+    /* zadanie : przepisać to samo ale używając funktorów */
+
+
 };
 
 int main()
