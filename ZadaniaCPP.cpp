@@ -235,8 +235,9 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
     static void zadaniaZSzablonow() {
         /*przykładem prostego szablonu z STL jest pair.
         Zadanie: napisać własny szablon na trójki [gotowy, patrz szablon TTrojka i
-        napisać konkretyzację dla typu int i string (osobno) a potem utworzyć
-        w define.h strukturę TOsoba która będzie potem jeszcze wykorzystywana dalej */
+        napisać konkretyzację dla typu int i string (osobno) [gotowe]
+        a potem utworzyć
+        w define.h strukturę TOsoba która będzie potem jeszcze wykorzystywana dalej [gotowe,patrz define.h]*/
         TTrojka<int> trojkaInt(1, 2, 3);
         TTrojka<string> trojkaString("Ala", "ma", "kota");
         cout << trojkaInt.getElement(2) << " - tu powinna byc dwojka\n";
@@ -249,6 +250,11 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         TTrojka<TTrojka<int>> trojkaTrojek(TTrojka<int>(1,2,3), TTrojka<int>(4,5,6), TTrojka<int>(7,8,9) );
         */
         cout << trojkaTrojek.getElement(2).getElement(2) << "- tu powinna byc cyfra 5\n";
+
+        TTrojka<TOsoba> trzyOsoby = { {"Adam", "Kowalski", 25}, 
+            {"Anna", "Kowalska", 24},
+            {"Dorota", "Nowak", 30} };
+        cout << trzyOsoby.getElement(2).imie << " - tu powinno być imię Anna\n";
     }
 };
 
