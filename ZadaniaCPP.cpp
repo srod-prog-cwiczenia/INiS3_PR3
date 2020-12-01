@@ -11,6 +11,18 @@ class TTrojka {
 public:
     T x1, x2, x3;
     TTrojka(const T &a1, const T &a2, const T &a3) : x1(a1), x2(a2), x3(a3) {};
+    T getElement(const int& ktory) {
+        switch (ktory) {
+        case 1:
+            return x1; break;
+        case 2:
+            return x2; break;
+        case 3:
+            return x3; break;
+        default:
+            assert(!"Nieprawidlowy indeks w getElement w szablonie TTrojka");
+        }
+    }
 };
 
 class Zadania {
@@ -221,7 +233,9 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
     }
     static void zadaniaZSzablonow() {
         /*przykładem prostego szablonu z STL jest pair.
-        Zadanie: napisać własny szablon na trójki.*/
+        Zadanie: napisać własny szablon na trójki [gotowy, patrz szablon TTrojka i
+        napisać konkretyzację dla typu int i string (osobno) a potem utworzyć
+        w define.h strukturę TOsoba która będzie potem jeszcze wykorzystywana dalej */
 
     }
 };
