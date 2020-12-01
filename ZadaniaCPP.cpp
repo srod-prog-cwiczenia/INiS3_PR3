@@ -14,13 +14,14 @@ public:
     T getElement(const int& ktory) {
         switch (ktory) {
         case 1:
-            return x1; break;
+            return x1; 
         case 2:
-            return x2; break;
+            return x2; 
         case 3:
-            return x3; break;
+            return x3; 
         default:
             assert(!"Nieprawidlowy indeks w getElement w szablonie TTrojka");
+            return x3; // tylko po to by pozbyć się warninga nr C4715.
         }
     }
 };
@@ -236,7 +237,18 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         Zadanie: napisać własny szablon na trójki [gotowy, patrz szablon TTrojka i
         napisać konkretyzację dla typu int i string (osobno) a potem utworzyć
         w define.h strukturę TOsoba która będzie potem jeszcze wykorzystywana dalej */
-
+        TTrojka<int> trojkaInt(1, 2, 3);
+        TTrojka<string> trojkaString("Ala", "ma", "kota");
+        cout << trojkaInt.getElement(2) << " - tu powinna byc dwojka\n";
+        cout << trojkaString.getElement(2) << " - tu powinno byc slowo <<ma>>\n";
+        //czy konkretyzacją szablonu może być kolejna konkretyzacja?
+        //tak, można, np:
+        TTrojka<TTrojka<int>> trojkaTrojek = { {1,2,3}, {4,5,6}, {7,8,9} };
+        /* bardziej formalnie można uruchomić konstruktory ,,zagnieżdżone'' w ten sposób,
+        * ale jest on niemiłosiernie rozwlekły:
+        TTrojka<TTrojka<int>> trojkaTrojek(TTrojka<int>(1,2,3), TTrojka<int>(4,5,6), TTrojka<int>(7,8,9) );
+        */
+        cout << trojkaTrojek.getElement(2).getElement(2) << "- tu powinna byc cyfra 5\n";
     }
 };
 
