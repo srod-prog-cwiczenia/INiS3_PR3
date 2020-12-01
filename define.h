@@ -16,7 +16,9 @@ struct TOsoba {
 	string imie, nazwisko;
 	unsigned int wiek;
 	//konstruktor:
-	TOsoba(string imie_p, string nazwisko_p, unsigned int wiek_p) :
+	TOsoba(const string &imie_p, const string &nazwisko_p, const unsigned int &wiek_p) :
 		imie(imie_p), nazwisko(nazwisko_p), wiek(wiek_p) {}
+	operator string() const { return imie + " " + 
+		nazwisko + " " + to_string(wiek); };
 };
 

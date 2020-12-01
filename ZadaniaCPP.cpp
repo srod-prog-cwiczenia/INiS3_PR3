@@ -255,6 +255,18 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
             {"Anna", "Kowalska", 24},
             {"Dorota", "Nowak", 30} };
         cout << trzyOsoby.getElement(2).imie << " - tu powinno być imię Anna\n";
+        /*zadanie dłuższe: napisać szablon listy który będzie ,,trzymaczem''
+        dla dowolnej ilości obiektów klasy T*/
+    }
+    static void zadaniaZPrzeladowaniaOperatorow() {
+        /*przeladowac operator (string) i + i < tak by działał poniższy kod:*/
+        TOsoba oso1 = { "Adam", "Kowalski", 25 };
+        TOsoba oso2 = { "Artur", "Nowak", 24 };
+        cout << (string)oso1 << endl;
+        /*if (oso1 < oso2) {
+
+        };
+        cout << (string)(oso1 + oso2) << endl;*/ //TODO: dokończyć przeciążenie
     }
 };
 
@@ -262,12 +274,13 @@ int main()
 {
     for (;;) {
         TMenu* mnu = new TMenu();
-        mnu->addAll(7, "Testy kolekcji", "Wskazniki",
+        mnu->addAll(8, "Testy kolekcji", "Wskazniki",
             "Zadania z kolekcji STL",
             "Zadania z wypisywania elementow kolekcji (z uzyciem lambda funkcji)",
             "Zadania z wypisywania elementow kolekcji (z uzyciem funktorow)",
             "Zadania z modyfikacji elementow kolekcji (z uzyciem funktorow)",
-            "Zadania z szablonów"
+            "Zadania z szablonów",
+            "Zadania z przeladowania operatorow"
         );
         switch (mnu->wybierz()) {
         case 0:
@@ -292,6 +305,9 @@ int main()
             break;
         case 7:
             Zadania::zadaniaZSzablonow();
+            break;
+        case 8:
+            Zadania::zadaniaZPrzeladowaniaOperatorow();
             break;
         }
         delete mnu;
