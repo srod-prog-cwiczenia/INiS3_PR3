@@ -5,6 +5,14 @@
 #include "FormatowanieKolekcji.h"
 #include "TMenu.h"
 
+/*szablon do zadania zadaniaZSzablonow: */
+template <typename T>
+class TTrojka {
+public:
+    T x1, x2, x3;
+    TTrojka(const T &a1, const T &a2, const T &a3) : x1(a1), x2(a2), x3(a3) {};
+};
+
 class Zadania {
 public:
     static void formatowanieKolekcji() {
@@ -211,17 +219,23 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
             cout << txt << endl;
         cout << endl;
     }
+    static void zadaniaZSzablonow() {
+        /*przykładem prostego szablonu z STL jest pair.
+        Zadanie: napisać własny szablon na trójki.*/
+
+    }
 };
 
 int main()
 {
     for (;;) {
         TMenu* mnu = new TMenu();
-        mnu->addAll(6, "Testy kolekcji", "Wskazniki",
+        mnu->addAll(7, "Testy kolekcji", "Wskazniki",
             "Zadania z kolekcji STL",
             "Zadania z wypisywania elementow kolekcji (z uzyciem lambda funkcji)",
             "Zadania z wypisywania elementow kolekcji (z uzyciem funktorow)",
-            "Zadania z modyfikacji elementow kolekcji (z uzyciem funktorow)"
+            "Zadania z modyfikacji elementow kolekcji (z uzyciem funktorow)",
+            "Zadania z szablonów"
         );
         switch (mnu->wybierz()) {
         case 0:
@@ -243,6 +257,9 @@ int main()
             break;
         case 6:
             Zadania::zadaniaZModyfikacjiKolekcjiFunktory();
+            break;
+        case 7:
+            Zadania::zadaniaZSzablonow();
             break;
         }
         delete mnu;
