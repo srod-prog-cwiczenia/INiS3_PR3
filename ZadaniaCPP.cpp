@@ -221,7 +221,7 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         vector<string> outS1(inS.size()); //bo wektor wynikowy ma być zainicjowany pustymi łańcuchami do zadanej długości
         transform(inS.begin(), inS.end(), outS1.begin(), duzeLitery);
         cout << "Transformacja przez lambda funkcje: " << endl;
-        for (auto txt : outS1)
+        for (const auto &txt : outS1)
             cout << txt << endl;
         cout << endl;
         
@@ -274,7 +274,19 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         mIntOso[1] = oso1;
         cout << "Tu powinna być osoba nr 1: " << (string)mIntOso[1] << endl;
         map<TOsoba, double> mOsoKw;
-        //mOsoKw[oso1] = 1000.0;
+        mOsoKw[oso1] = 1000.0; /*aby używać te mapowanie należy zadbać o 
+                               komparator dla typu kluczy - w tym celu 
+                               nieodzowne jest przeładowanie operatora <
+                               dla TOsoby - bądź zadanie tego komparatora 
+                               osobno
+                               */
+        mOsoKw[oso2] = 2000.0;
+        /*wypisanie zawartości mapy:
+        */
+        cout << "Wypisanie zawartości mapy osoba -> kwota \n";
+        for (const auto &ele : mOsoKw) {
+            cout << (string)(ele.first) << " " << ele.second << endl;
+        }
     }
 };
 

@@ -24,5 +24,28 @@ struct TOsoba {
 		imie(imie_p), nazwisko(nazwisko_p), wiek(wiek_p) {}
 	operator string() const { return imie + " " + 
 		nazwisko + " " + to_string(wiek); };
+	/*
+	* przeci¹¿yæ < mo¿na tak, ale map tego nie rozumie ;). Wiêc stosujemy 
+	* przeci¹¿enie jak ni¿ej : friend, etc.
+	* 
+	bool operator < (const TOsoba& a) {
+		return nazwisko + " " + imie + " " + to_string(wiek) <
+			a.nazwisko + " " + a.imie + " " + to_string(a.wiek);
+	}*/
+	friend bool operator < (const TOsoba &a, const TOsoba &b) {
+		/*return a.nazwisko + " " + a.imie + " " + to_string(a.wiek) <
+			b.nazwisko + " " + b.imie + " " + to_string(b.wiek);
+		TODO: to nie jest do koñca poprawne porównanie, mo¿e to bêdzie dobrze,
+		* ale bezpieczniej jest zrobiæ tak: pad(nazwisko, 50) itditd.
+		* pad(string, int) to uzupe³nienie spacjami do zadanej d³ugoœci
+		*/
+//na szczêœcie jest mo¿liwe rozwi¹zanie w zupe³noœci niekontrowersyjne:
+		if (a.nazwisko < b.nazwisko) return true;
+		if (a.nazwisko > b.nazwisko) return false;
+		if (a.imie < b.imie) return true;
+		if (a.imie > b.imie) return false;
+		if (a.wiek < b.wiek) return true;
+		return false;
+	}
 };
 
