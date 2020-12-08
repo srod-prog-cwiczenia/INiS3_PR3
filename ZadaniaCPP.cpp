@@ -25,7 +25,36 @@ public:
         }
     }
 };
-
+//-------------------------------------------
+template <typename T>
+class TStosInterface {
+    virtual void push(const T& ele) = 0;
+    virtual T pop() = 0;
+};
+/*template <typename T>
+struct TElementStr {
+    T* element; //ewentualnie T element;
+    TElementStr* nastepny;
+};*/
+template <typename T>
+class TStos : public TStosInterface<T> {
+private:
+    struct TElementStr {
+        T element; //ewentualnie T element;
+        TElementStr* nastepny;
+    };
+    TElementStr* korzen = NULL;
+public:
+    TStos() {};
+    void push(const T& ele) {
+        TElementStr* nowyEle = new TElementStr();
+        nowyEle->nastepny = korzen;
+        nowyEle->element = ele;
+        korzen = nowyEle;
+    };
+    T pop() { T dummy = NULL; return dummy; };
+};
+//-------------------------------------------
 class Zadania {
 public:
     static void formatowanieKolekcji() {
