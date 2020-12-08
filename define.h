@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <map>
+#include <set>
 #include <string>
 #include <cstdarg>
 #include <cassert>
@@ -15,6 +17,8 @@ typedef string(*TFunkcjaFormatujaca)(const string&);
 struct TOsoba {
 	string imie, nazwisko;
 	unsigned int wiek;
+	//konstruktor domyœlny:
+	TOsoba(): wiek(0) {};
 	//konstruktor:
 	TOsoba(const string &imie_p, const string &nazwisko_p, const unsigned int &wiek_p) :
 		imie(imie_p), nazwisko(nazwisko_p), wiek(wiek_p) {}

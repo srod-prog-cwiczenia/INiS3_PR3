@@ -267,6 +267,14 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
 
         };
         cout << (string)(oso1 + oso2) << endl;*/ //TODO: dokończyć przeciążenie
+        /*gdyby nie przeładować operatora < (porównanie) dla 
+        TOsoba to niektóre kontenery by nie działały, np
+        map<TOsoba, double> ALE już map<int, TOsoba> TAK!*/
+        map<int, TOsoba> mIntOso;
+        mIntOso[1] = oso1;
+        cout << "Tu powinna być osoba nr 1: " << (string)mIntOso[1] << endl;
+        map<TOsoba, double> mOsoKw;
+        //mOsoKw[oso1] = 1000.0;
     }
 };
 
