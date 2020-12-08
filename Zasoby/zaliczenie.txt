@@ -1,0 +1,12 @@
+Zadanie na zaliczenie:
+Zdefiniowaæ kolekcjê struktur DaneOso {imie, nazwisko, wiek}
+(mo¿e byæ vector<DaneOso> albo list<DaneOso> albo ewentualnie set<DaneOso>
+Oprogramowaæ jej edycjê czyli:
+menu:
+1. Wypisanie bazy
+2. Dodanie elementu do bazy
+3. Skasowanie bazy
+4. Wczytanie z pliku (oprogramowaæ ,,serializacjê'' kolekcji)
+5. Zapisanie do pliku (oprogramowaæ ,,serializacjê'' kolekcji)
+
+Ewentualnie oprogramowaæ to przez SQLite.
