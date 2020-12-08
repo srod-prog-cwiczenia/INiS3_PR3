@@ -37,42 +37,47 @@ struct TElementStr {
     T* element; //ewentualnie T element;
     TElementStr* nastepny;
 };*/
+//-------------------------------------------
 template <typename T>
 class TStos : public TStosInterface<T> {
 private:
-    unsigned int licznik = 0;
-    struct TElementStr {
-        T element; //ewentualnie T* element;
-        TElementStr* nastepny;
-    };
-    TElementStr* korzen = NULL;
+	unsigned int licznik = 0;
+	struct TElementStr {
+		T element; //ewentualnie T* element;
+		TElementStr* nastepny;
+	};
+	TElementStr* korzen = NULL;
 public:
-    TStos() {};
-    ~TStos() {
-    /*TODO: KONIECZNIE dopisać destruktor który zwalnia pamięć
-    na wszystkie elementy stosu. CHYBA gdyby użyć autowskaźników.
-    */
-    };
-    void push(const T& ele) {
-        TElementStr* nowyEle = new TElementStr();
-        nowyEle->nastepny = korzen;
-        nowyEle->element = ele;
-        korzen = nowyEle;
-        licznik++;
-    };
-    T pop() {
-        if (licznik == 0) {
-            T dummy = NULL; return dummy;
-        }
-        else {
-            T odp = korzen->element;
-            TElementStr* doUsuniecia = korzen;
-            korzen = korzen->nastepny;
-            delete doUsuniecia;
-            return odp;
-        }
-    }
-    unsigned int rozmiar() { return licznik; }
+	TStos() {};
+	~TStos() {
+		/* destruktor który zwalnia pamięć
+		na wszystkie elementy stosu. CHYBA gdyby użyć autowskaźników.
+		*/
+		while (licznik > 0)
+			pop();
+	};
+	void push(const T& ele) {
+		TElementStr* nowyEle = new TElementStr();
+		nowyEle->nastepny = korzen;
+		nowyEle->element = ele;
+		korzen = nowyEle;
+		licznik++;
+	};
+	T pop() {
+		if (licznik == 0) {
+			//T dummy = NULL; return dummy;  //, albo może lepiej tak:
+			assert(!"Proba zdjecia elementu ze stosu pustego!");
+		}
+		else {
+			T odp = korzen->element;
+			TElementStr* doUsuniecia = korzen;
+			korzen = korzen->nastepny;
+			delete doUsuniecia;
+			licznik--;
+			return odp;
+		}
+	}
+	unsigned int rozmiar() { return licznik; }
 };
 //-------------------------------------------
 class Zadania {
