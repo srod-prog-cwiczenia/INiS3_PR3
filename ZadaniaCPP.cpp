@@ -30,6 +30,7 @@ template <typename T>
 class TStosInterface {
     virtual void push(const T& ele) = 0;
     virtual T pop() = 0;
+    virtual unsigned int rozmiar() = 0;
 };
 /*template <typename T>
 struct TElementStr {
@@ -39,20 +40,39 @@ struct TElementStr {
 template <typename T>
 class TStos : public TStosInterface<T> {
 private:
+    unsigned int licznik = 0;
     struct TElementStr {
-        T element; //ewentualnie T element;
+        T element; //ewentualnie T* element;
         TElementStr* nastepny;
     };
     TElementStr* korzen = NULL;
 public:
     TStos() {};
+    ~TStos() {
+    /*TODO: KONIECZNIE dopisać destruktor który zwalnia pamięć
+    na wszystkie elementy stosu. CHYBA gdyby użyć autowskaźników.
+    */
+    };
     void push(const T& ele) {
         TElementStr* nowyEle = new TElementStr();
         nowyEle->nastepny = korzen;
         nowyEle->element = ele;
         korzen = nowyEle;
+        licznik++;
     };
-    T pop() { T dummy = NULL; return dummy; };
+    T pop() {
+        if (licznik == 0) {
+            T dummy = NULL; return dummy;
+        }
+        else {
+            T odp = korzen->element;
+            TElementStr* doUsuniecia = korzen;
+            korzen = korzen->nastepny;
+            delete doUsuniecia;
+            return odp;
+        }
+    }
+    unsigned int rozmiar() { return licznik; }
 };
 //-------------------------------------------
 class Zadania {
@@ -286,6 +306,16 @@ wskaźnik na licznik i inicjować go za każdym razem na 0. */
         cout << trzyOsoby.getElement(2).imie << " - tu powinno być imię Anna\n";
         /*zadanie dłuższe: napisać szablon listy który będzie ,,trzymaczem''
         dla dowolnej ilości obiektów klasy T*/
+        TStos<int> sInt;
+        sInt.push(7);
+        sInt.push(13);
+        int* wskI = new int;
+        *wskI = 17;
+        sInt.push(*wskI);
+        delete wskI;
+        /*stos zadziałał!*/
+        cout << "Rozmiar: " << sInt.rozmiar() << endl;
+        cout << sInt.pop() << " " << sInt.pop() << " " << sInt.pop() << endl;
     }
     static void zadaniaZPrzeladowaniaOperatorow() {
         /*przeladowac operator (string) i + i < tak by działał poniższy kod:*/
